@@ -325,49 +325,62 @@ html { scroll-behavior: smooth; }
 }
 
 /*/ ABOUT SECTION ---------------------------------------------------------------------------/*/
-
+/*/ The about container for left and right sections with the grid outline for them /*/ 
 .about-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding-top: 3.5rem;
   padding-bottom: 1rem;
 }
+
+/*/ *** The right side of the about page *** /*/ 
+/*/ The right side container grid /*/ 
 .about-container .right-about {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 2fr);
   grid-gap: 2rem;
   padding: 0.2rem;
-  position: relative;
-
 }
 
 .about-container .right-about a {
-  display:inline-block;
-  height: fit-content;
-}
-.about-container .right-about .about-item {
   border: 3px solid var(--color-senary);
   border-radius: 15px;
   transition: all 0.4s ease-in-out;
   box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.2);
   background-color: var(--color-senary);
 }
-.about-container .right-about .about-item:hover {
+
+/*/ An about item square on the right side of the page /*/ 
+.about-container .right-about .about-item {
+  border: 3px solid var(--color-senary);
+  border-radius: 15px;
+  transition: all 0.4s ease-in-out;
+  background-color: var(--color-senary);
+}
+
+/*/ An about item square on the right side of the page HOVER settings/*/ 
+.about-container .right-about a:hover {
   cursor: default;
   transform: translateY(-5px);
   border: 3px solid var(--color-tertiary);
   box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.5);
 }
+
+/*/ The text that goes inside the boxes on the right /*/ 
 .about-container .right-about .about-item .abt-text {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
 }
+
+/*/ The large text in the boxes on the right above the small text /*/ 
 .about-container .right-about .about-item .abt-text .large-text {
   font-size: 3rem;
   font-weight: 700;
   color: var(--color-abt-text);
 }
+
+/*/ The small text in the boxes on the right below the large text /*/ 
 .about-container .right-about .about-item .abt-text .small-text {
   padding-left: 3rem;
   position: relative;
@@ -376,6 +389,7 @@ html { scroll-behavior: smooth; }
   color: var(--color-gtext1);
   letter-spacing: 2px;
 }
+ /*/ The small line before the small text in the boxes on the about pages  /*/ 
 .about-container .right-about .about-item .abt-text .small-text::before {
   content: "";
   position: absolute;
@@ -385,6 +399,7 @@ html { scroll-behavior: smooth; }
   height: 2px;
   background-color: var(--color-gtext1);
 }
+
 .about-container .left-about {
   padding-right: 5rem;
 }
@@ -1122,15 +1137,17 @@ text-align: center;
 /*/------------CONTACT SECTION-------------/*/
 /*/CONTACT CONTAINER/*/
 /*/This is the overall contained for the left and right columns/*/
-Section .contact-container{
+.contact-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   margin-top: 3rem;
-  margin-bottom: 6rem;
+  grid-gap: 3rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
 }
 
 /*/This is the p text in the overall container/*/
-Section .contact-con  p {
+.contact-container .contact-con  p {
   margin: 1rem 1rem;
   line-height: 2rem;
   color: var(--color-secondary);
@@ -1138,14 +1155,13 @@ Section .contact-con  p {
 
 /*/CONTACT CONTAINER - LEFT SIDE/*/
 /*/This is the left container/*/
-Section .contact-con-left {
-  transition: all 0.4s ease-in-out;
-  width: 100%;
-  height: 100%;
+.contact-container .contact-con-left {
+  padding-left: 4rem;
+  padding-right: 4rem;
 }
 
 /*/This is the left container h4 title text/*/
-Section .contact-con-left h4 {
+.contact-container .contact-con-left h4 {
   margin-top: 1rem;
   font-size: 2rem;
   text-transform: uppercase;
@@ -1156,13 +1172,18 @@ Section .contact-con-left h4 {
 
 }
 
+.contact-container .contact-con-left .image {
+  position: relative;
+
+}
+
 /*/This is the left contact image/*/
-Section .contact-con-left .image img {
+.contact-container .contact-con-left .image img {
   border-radius:5px;
+  -o-object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
-  transition: all 0.4s ease-in-out;
-  align-items: relative;
 }
 /*/This is the left contact image hover *** Just take it out for now since it links to nothing? Or eventually link it to references
 Section .contact-con-left  .image img:hover {
@@ -1172,13 +1193,16 @@ Section .contact-con-left  .image img:hover {
 /*/
 
 /*/CONTACT CONTAINER - RIGHT SIDE/*/
-Section .contact-con-right {
+.contact-container .contact-con-right {
   margin-left: 3rem;
   margin-right: 3rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  position: relative;
 }
 
 /*/This is the right container h4 title text/*/
-Section .contact-con-right h4 {
+.contact-container .contact-con-right h4 {
   margin-top: 1rem;
   font-size: 2rem;
   text-transform: uppercase;
@@ -1188,15 +1212,38 @@ Section .contact-con-right h4 {
   padding-bottom: 1rem;
 }
 
-Section .contact-con-right .contact-items {
+.contact-container .contact-con-right .contact-items {
   display: grid;
   grid-template-columns: repeat(3, 0.5fr);
   grid-gap: 2rem;
+
   }
 
 /*/CONTACT CONTAINER **ITEM**- RIGHT SIDE/*/
 /*/ This is an item in the right container /*/
 .contact-container .contact-con-right .contact-items .contact-item {
+  border: 3px solid var(--color-conframe1);
+  border-radius: 15px;
+  background-color: var(--color-tertiary);
+  align-items: center;
+  display: flex;
+  justify-content:flex-start;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+}
+
+.contact-container .contact-con-right .contact-items .contact-email {
+  border: 3px solid var(--color-conframe1);
+  border-radius: 15px;
+  background-color: var(--color-tertiary);
+  align-items: center;
+  display: flex;
+  justify-content:flex-start;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+}
+
+.contact-container .contact-con-right .contact-items a {
   border: 3px solid var(--color-conframe1);
   border-radius: 15px;
   box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.2);
@@ -1205,11 +1252,33 @@ Section .contact-con-right .contact-items {
   display: flex;
   justify-content: space-between;
   transition: all 0.4s ease-in-out;
+  position: relative;
+}
+
+.contact-container .contact-con-right .contact-items .contact-email {
+  border: 3px solid var(--color-conframe1);
+  border-radius: 15px;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.2);
+  background-color: var(--color-tertiary);
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+}
+
+.contact-container .contact-con-right .contact-items .contact-email:hover {
+  cursor: default;
+  transform: translateY(-5px);
+  transition: all 0.4s ease-in-out;
+  box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.5);
+  border: 3px solid var(--color-conframe2);
+  border-radius: 15px;
 }
 
 
 /*/ This is an item in the right container hover effects /*/
-.contact-container .contact-con-right .contact-items .contact-item:hover {
+.contact-container .contact-con-right .contact-items a:hover {
   cursor: default;
   transform: translateY(-5px);
   transition: all 0.4s ease-in-out;
@@ -1295,13 +1364,13 @@ Section .contact-con-right .contact-items {
 
 
 /*/ This is the icon item in the right container hyperlink/*/
-Section .contact-con-right .contact-item .contact-icon a:hover {
+.contact-container .contact-con-right .contact-item .contact-icon a:hover {
   background-color: var(--color-tertiary);
 }
-Section .contact-con-right .contact-item .contact-icon a:hover i {
+.contact-container .contact-con-right .contact-item .contact-icon a:hover i {
   color: var(--color-quinary);
 }
-Section .contact-con-right .contact-item .contact-icon a i {
+.contact-container .contact-con-right .contact-item .contact-icon a i {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1547,14 +1616,35 @@ Section .contact-con-right .contact-item .contact-icon a i {
   .about-container .right-about {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+@media screen and (max-width: 1292px) {
 
 }
 
-@media screen and (max-width: 1190px) {
+
+@media screen and (max-width: 1090px) {
   .portfolios {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+  .contact-container {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+
+  .contact-container .contact-con-right {
+    padding-left: 0rem;
+    padding-right: 0rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
+  }
+
+  .contact-container .contact-con-left {
+    padding-left: 0rem;
+    padding-right: 0rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
+  }
 }
 
 
@@ -1591,21 +1681,8 @@ Section .contact-con-right .contact-item .contact-icon a i {
   .main-title h2 .bg-text {
     font-size: 4.5rem;
   }
-  .contact-content-con {
-    flex-direction: column;
-  }
-  .contact-content-con .right-contact {
-    margin-left: 0;
-    margin-top: 2.5rem;
-  }
-  .contact-content-con .right-contact .i-c-2 {
-    flex-direction: column;
-  }
-  .contact-content-con .right-contact .i-c-2 :last-child {
-    margin-left: 0;
-    margin-top: 1.5rem;
-  }
 }
+
 @media screen and (max-width: 970px) {
   .section {
     padding: 7rem 6rem;
@@ -1708,20 +1785,6 @@ Section .contact-con-right .contact-item .contact-icon a i {
   .blogs {
     grid-template-columns: 1fr;
     padding-bottom: 6rem;
-  }
-  .contact-content-con {
-    flex-direction: column;
-  }
-  .contact-content-con .right-contact {
-    margin-left: 0;
-    margin-top: 2.5rem;
-  }
-  .contact-content-con .right-contact .i-c-2 {
-    flex-direction: column;
-  }
-  .contact-content-con .right-contact .i-c-2 :last-child {
-    margin-left: 0;
-    margin-top: 1.5rem;
   }
   .section {
     padding: 1rem 1rem !important;
