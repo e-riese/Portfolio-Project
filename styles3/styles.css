@@ -1,0 +1,1783 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+/* Color Pallettes SECTION ---------------------------------------------------------------*/
+/* Light Mode */
+:root {
+  --color-background: #f0ede2;
+  --color-text-back: #ffffff;
+  --border-color:#e9e8e4;
+  --color-caption:#ffffff;
+
+
+  --color-primary: #ffffff;
+  --color-secondary: #000000;
+  --color-tertiary:#0a66c2;
+  --color-cont1:#0d293a;
+
+  --color-greytext:#666666;
+  --color-greylite:#aaaaaa;
+
+  --color-img-shadow: rgba(255, 255, 255, 0.9);
+  --box-shadow-1: 0 3px 15px rgba(0,0,0,.3) ;
+  --blog-fade:rgba(255, 255, 255, 0.5);
+}
+/* Dark Mode */
+.dark-mode {
+  --color-background: #000000;
+  --color-text-back: #1b1f23;
+  --border-color:#111111;
+  --color-caption:#ffffff;
+
+  --color-primary: #1b1f23;
+  --color-secondary: #ffffff;
+  --color-tertiary: #5db4fa;
+  --color-cont1:#454545;
+
+  --color-greytext:#9f9f9f;
+  --color-greylite:#9f9f9f;
+
+  --blog-fade:rgba(255, 255, 255, 0.5);
+  --color-img-shadow: rgba(0, 0, 0, 0.8);
+  --box-shadow-1: 0 3px 15px rgba(0,0,0,.3) ;
+
+}
+/*/------- Main overall html formatting --------------------------------------------------------------------------------------/*/
+
+body {
+  background-color: var(--color-background);
+  font-family: "Public Sans", sans-serif;
+  font-size: 1.1rem;
+  color: var(--color-body);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  font-family: inherit;
+}
+header {
+  min-height: 100vh;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  
+}
+section {
+  min-height: 100vh;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 1rem 13rem;
+  transition: all 0.5s ease-in-out;
+}
+html { scroll-behavior: smooth; } 
+.container {
+  /* display: none;
+  transform: translateY(-100%) scale(0);
+  transition: all 1s ease-in-out;*/
+  background-color: var(--color-primary);
+  opacity: 0;
+  transform: scale(1);
+  transition: all 0.5s ease-in-out;
+}
+
+/* Sections (pages) */
+.sec1 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+.sec2 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+.sec3 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+.sec4 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+.sec5 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+.sec6 {
+  display: none;
+  transform: translateY(0) scale(1);
+}
+
+.active {
+  display: block;
+  -webkit-animation: appear 1s ease;
+          animation: appear 1s ease;
+  transform: translateY(0) scaleY(1);
+}
+@-webkit-keyframes appear {
+  0% {
+    transform: translateY(-100%) scaleY(0);
+  }
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+}
+@keyframes appear {
+  0% {
+    transform: translateY(-100%) scaleY(0);
+  }
+  100% {
+    transform: translateY(0) scaleY(1);
+  }
+}
+/* --- Navigation buttons seciton --- */
+
+.controls {
+  position: fixed;
+  z-index: 10;
+  top: 50%;
+  right: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
+}
+.controls .control {
+  padding: 1rem;
+  cursor: pointer;
+  background-color: var(--color-cont1);
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.7rem 0;
+  box-shadow: var(--box-shadow-1);
+  transition: all 0.5s ease-in-out;
+  &:active {
+    transform: translateY(-5px);
+  }
+}
+.controls .control i {
+  font-size: 1.2rem;
+  color: var(--color-greylite);
+  pointer-events: none;
+}
+.controls .active-btn {
+  background-color: var(--color-tertiary);
+  transition: all 0.4s ease-in-out;
+}
+.controls .active-btn i {
+  color: var(--color-text-back);
+}
+/* --- Light/Dark Mode button seciton --- */
+.theme-btn {
+  top: 5%;
+  right: 3%;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: var(--color-tertiary);
+  cursor: pointer;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--box-shadow-1);
+  transition: all 0.5s ease-in-out;
+
+  &:active {
+    transform: translateY(-5px);
+    transition: all 0.5s ease-in-out;
+  }
+}
+/* Light/Dark Mode icon */
+.theme-btn i {
+  font-size: 1.4rem;
+  color: var(--color-text-back);
+  pointer-events: none;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Header Content on Home Page SECTION ---------------------------------------------------------------*/
+
+/* This splits the page into a grid of two columns*/
+.header-container {
+  margin-top: 3rem;
+  margin-right: 16rem;
+  margin-left: 10rem;
+  margin-bottom: 5rem;
+  transition: all 0.5s ease-in-out;
+}
+
+/* This is the left container for the page. 
+It stays on the left because this container comes first in the "grid" container that it exists in */ 
+.header-container .header-item {
+  align-items: center;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+/* This is the cover shape on the top side. It's not visible right now but it allows for the option to edit the 
+image size on the page more easily as well as change the design if you want to change it to a plain color shape design. */ 
+.header-container .header-item .image-container {
+  width: 100%;
+  height: 500px;
+  background-color: none;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 0.5s ease-in-out;
+
+}
+
+/* This is image which goes over the cover shape. 
+Can cover the whole shape as it is now or be separated. */ 
+.header-container .header-item .image-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* This is the caption over the picture on the homepage*/
+.header-container .header-item .image-container figcaption {
+position: absolute; 
+bottom: 0rem; 
+left: 0;
+width: 100%; 
+padding: 5px;
+text-align: right;
+color: var(--color-caption);
+/* background: rgba(255, 255, 255, 0.405);*/
+font-size: 0.7rem;
+transition: all 0.5s ease-in-out;
+}
+
+ 
+.header-container .text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--color-text-back);
+  border-color: var(--border-color);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position:relative;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+
+}
+
+.header-container .text-container .text-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--color-text-back);
+  border-color: var(--border-color);
+  margin: 2rem;
+  position:relative;
+  transition: all 0.5s ease-in-out;
+}
+
+
+.header-container .text-container .text-box .name {
+  font-size: 3rem;
+  color: var(--color-secondary);
+  transition: all 0.5s ease-in-out;
+}
+
+.header-container .text-container .name span {
+  color: var(--color-tertiary);
+  transition: all 0.5s ease-in-out;
+
+}
+.header-container .text-container p {
+  padding-bottom: 1.5rem;
+  line-height: 2rem;
+  color: var(--color-greytext);
+  transition: all 0.5s ease-in-out;
+
+ 
+}
+
+/*/ ABOUT SECTION ---------------------------------------------------------------------------/*/
+
+/*/ The about container for all the items in this section with the grid outline for them /*/ 
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding-bottom: 2rem;
+}
+
+ /* ------------------------ v FIRST SHORT SUMMARY ON ABOUT PAGE v ------------------------ */ 
+
+ /* The white text boxes formatting on the about page */ 
+ .about-container .white-box {
+  background-color: var(--color-text-back);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+}
+
+/* -------- Subheading text that goes in the white boxes --------
+ This formatting may overlap with the general subhedaing formatting. */ 
+
+ .about-container .white-box .subtitle-box  h4 {
+  font-size: 3rem;
+  color: var(--color-secondary);
+  text-align: left;
+  transition: all 0.5s ease-in-out;
+}
+
+.about-container .white-box .subtitle-box h4 span {
+  color: var(--color-tertiary);
+  transition: all 0.5s ease-in-out;
+}
+
+.about-container .white-box .subtitle-box {
+  padding: 1.5rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.about-container .white-box .subtitle-box  p {
+  line-height: 1.5rem;
+  color: var(--color-greytext);
+  text-align: left;
+  transition: all 0.5s ease-in-out;
+}
+
+/* -------- General text that goes in the white boxes -------- */
+ /* The text box formatting for text that goesin the white boxes */ 
+
+.about-container .white-box .text-box {
+  padding: 2rem;
+}
+
+ /* The brief summary text on the about page in the first white box */ 
+.about-container .white-box .text-box  p {
+  line-height: 2rem;
+  color: var(--color-secondary);
+  text-align: justify;
+}
+
+ /* ------------------------ ^ FIRST SHORT SUMMARY ON ABOUT PAGE ^ ------------------------ */ 
+
+  /* ----------------------------- v BOXES ON ABOUT PAGES v ------------------------ */ 
+
+/*/ The container grid for the key point white boxes /*/ 
+.about-container .about-boxes-cont {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  grid-gap: 1rem;
+  padding: 0.2rem;
+  margin-bottom: 1rem;
+  transition: all 0.5s ease-in-out;
+}
+
+/*/ This is the container for a white box image /*/ 
+.about-container .about-boxes-cont .about-image {
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+overflow: hidden;
+position: relative;
+width: 100%;
+transition: all 0.5s ease-in-out;
+}
+
+/*/ This is the white box image /*/ 
+.about-container .about-boxes-cont .about-image img {
+  width: 100%;
+  /* this keeps the images the same height on the page*/
+  height: 13rem; 
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+/*/ The the hyperlinks for the white about boxes /*/ 
+.about-container .about-boxes-cont a {
+  border-radius: 10px;
+  transition: all 0.4s ease-in-out;
+  background: var(--color-text-back);
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    cursor: default;
+    transform: translateY(-5px);
+    outline: 5px solid var(--color-tertiary);
+    box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+/*/ --------------- The key point about boxes ------------------ /*/ 
+
+/*/ An about box in the about page /*/ 
+.about-container .about-boxes-cont a .about-box {
+  border-radius: 10px;
+  transition: all 0.4s ease-in-out;
+  background-color: var(--color-text-back);
+  position: relative;
+  
+}
+
+/*/ --------------- The text that shows up over the about boxes ------------------ /*/ 
+
+/*/ The text container that goes over the images on the about boxes /*/ 
+.about-container .about-boxes-cont .about-box .abt-hover-text {
+
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%;
+  height: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 1.0rem;
+  padding-top:1.0rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  background-color: var(--color-img-shadow);
+/* this stops the text from going outside the box even when the screen is small*/
+  overflow: auto;
+
+  white-space: normal; /* Ensures wrapping */
+  overflow-wrap: break-word; /* Prevents shifting */
+  /*/ What happens when mouse hovers over the text container over the about box image /*/ 
+
+  &:hover {
+    opacity: 1;
+    position: absolute;
+  }
+}
+
+/*/ The hover text that goes over the images /*/ 
+.about-container .about-boxes-cont .about-box .abt-hover-text .small-text {
+  font-size: 1rem;
+  color: var(--color-secondary);
+  text-align: justify;
+  line-height: 1.5rem;
+
+}
+
+
+.about-container .about-boxes-cont .about-box .abt-hover-text .small-text span {
+  color: var(--color-tertiary);
+}
+
+.about-container .about-boxes-cont .about-box .abt-hover-text .special-text {
+  font-size: 1rem;
+  color: var(--color-secondary);
+  text-align: left;
+  line-height: 1.5rem;
+
+}
+.about-container .about-boxes-cont .about-box .abt-hover-text .special-text span {
+  color: var(--color-tertiary);
+}
+
+.about-container .about-boxes-cont .about-box .abt-hover-text ul{
+  display: list-item;
+  color: var(--color-secondary);
+  padding-left: 1rem;
+}
+
+.about-container .about-boxes-cont .about-box .abt-hover-text ul li{
+  display: list-item;
+  list-style-type:disc;
+  list-style-position: outside;
+  padding-left: 0.5rem;
+  padding-bottom: 0.8rem;
+}
+
+
+
+
+
+/*/ --------------- The subheading under the about boxes ------------------ /*/ 
+
+/*/ The text container for the subheading under the boxes /*/ 
+.about-container .about-boxes-cont .about-box .abt-bottom-text {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/*/ The text subheading under the boxes boxes /*/ 
+.about-container .about-boxes-cont .about-box .abt-bottom-text .large-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-tertiary);
+}
+
+ /*/ The small line in the boxes separating the small/large text - remove for now
+.about-container .about-boxes-cont .about-box .abt-bottom-text .small-text::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 2rem;
+  height: 2px;
+  background-color: var(--color-tertiary); }/*/ 
+
+ /* ------------------------ ^ BOXES ON ABOUT PAGES ^ ------------------------ */ 
+
+
+.stat-title {
+  font-size: 2rem;
+  text-align: center;
+  padding: 2rem 0;
+  position: relative;
+  color: var(--color-secondary);
+}
+
+/*/ ABOUT SECTION - TIMELINE ---------------------------------------------------------------------------/*/
+
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 0rem;
+  padding-bottom: 3rem;
+  padding-top: 1rem;
+}
+
+.timeline .white-box {
+  background-color: var(--color-text-back);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* -------- Timeline Subtitle -------- */
+
+.timeline .white-box .subtitle-box  h4 {
+  font-size: 2rem;
+  color: var(--color-secondary);
+  text-align: left;
+}
+
+.timeline .white-box .subtitle-box h4 span {
+  color: var(--color-tertiary);
+}
+
+.timeline .white-box .subtitle-box {
+  padding: 1.5rem;
+}
+
+.timeline .white-box .subtitle-box  p {
+  line-height: 1.5rem;
+  color: var(--color-greytext);
+  text-align: left;
+}
+
+/* -------- Timeline White Box Text -------- */
+.timeline .white-box .text-box {
+  padding: 2rem;
+}
+
+ /* The brief summary text on the about page in the first white box */ 
+.timeline .white-box .text-box  p {
+  line-height: 2rem;
+  color: var(--color-secondary);
+  text-align: justify;
+}
+
+/* --------  -------- */
+
+.timeline .white-box .tl-item {
+  padding-left: 2rem;
+  padding-top: 1rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+
+}
+
+.timeline .white-box .tl-item .tl-item-h{
+  display: flex;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  margin-left: 2.3rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
+}
+
+/* .timeline .white-box .tl-item .tl-item-logo .tl-icon {
+  background-color: var(--color-secondary);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display:flexbox;
+  align-items: center;
+  justify-content: center;
+}*/
+.timeline .white-box .tl-item .tl-item-h .tl-item-logo  .tl-icon img {
+  font-size: 1rem;
+  clip-path: circle(28px at center);
+  width: 60px;
+  height: 60px;
+  color: #0050A5;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  top: 0.5rem;
+  
+}
+.timeline .white-box .tl-item .tl-item-h .tl-item-logo .tl-duration {
+  padding: 0.2rem 0.6rem;
+  background-color: var(--color-tertiary);
+  border-radius: 15px;
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-back);
+  left: 0.1rem;
+  top: 0.6rem;
+  position: relative;
+  align-self: center;
+}
+
+.timeline .white-box .tl-item .tl-item-h .tl-item-logo {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.timeline .white-box .tl-item .tl-item-h .tl-item-title {
+  margin-left: 0.5rem;
+  margin-top: 2rem;
+  align-self: center;
+}
+
+
+.timeline .white-box .tl-item .tl-item-h .tl-item-title h5 {
+  line-height: 2rem;
+}
+.timeline .white-box .tl-item .tl-item-h .tl-item-title .team-text {
+  padding: 1rem 0;
+  margin-left: 0rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+}
+.timeline .white-box .tl-item .tl-item-h .role-text {
+  font-size: 1.5rem;
+  color: var(--color-tertiary);
+}
+.timeline .white-box .tl-item .tl-item-h .extra-text {
+  color: var(--color-greytext);
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-top: -.2rem;
+}
+
+.timeline .white-box .tl-item .tl-item-t {
+margin:1rem;
+margin-left: 1.5rem;
+}
+
+.timeline .white-box .tl-item .tl-item-t ul {
+  display: list-item;
+  color: var(--color-secondary);
+  padding-left: 2rem;
+  padding-right: 1rem;
+}
+
+.timeline .white-box .tl-item .tl-item-t ul li {
+  color: var(--color-secondary);
+  text-align: justify;
+  line-height: 1.7rem;
+  list-style-type: disc;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  
+}
+
+.timeline .white-box .tl-item .tl-item-t ul li strong{
+  color: var(--color-tertiary);
+}
+
+.timeline .white-box .tl-item .tl-item-t p {
+  color: var(--color-secondary);
+  line-height: 1rem;
+}
+
+.stat-title::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 70%;
+  height: 1px;
+  background-color: var(--color-secondary);
+  transform: translateX(-50%);
+}
+
+/* PROJECT HEADING*/
+
+.project .white-box {
+  background-color: var(--color-text-back);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.project .white-box .subtitle-box  h4 {
+  font-size: 3rem;
+  color: var(--color-secondary);
+  text-align: left;
+}
+
+.project .white-box .subtitle-box h4 span {
+  color: var(--color-tertiary);
+}
+
+.project .white-box .subtitle-box {
+  padding: 1.5rem;
+}
+
+.project .white-box .subtitle-box  p {
+  line-height: 1.5rem;
+  color: var(--color-greytext);
+  text-align: left;
+}
+/* -------------------------------------  */
+/* -------- Timeline White Box Text -------- */
+.timeline .white-box .text-box {
+  padding: 2rem;
+}
+
+ /* The brief summary text on the about page in the first white box */ 
+.timeline .white-box .text-box  p {
+  line-height: 2rem;
+  color: var(--color-secondary);
+  text-align: justify;
+}
+
+
+/*/ UNIVERSITY PORTFOLIO SECTION ---------------------------------------------------------------------------/*/
+
+/* UNIVERSITY PORTFOLIO HEADING*/
+
+.port-c .white-box {
+  background-color: var(--color-text-back);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+}
+
+.port-c .white-box .subtitle-box  h4 {
+  font-size: 3rem;
+  color: var(--color-secondary);
+  text-align: left;
+  transition: all 0.5s ease-in-out;
+}
+
+.port-c .white-box .subtitle-box h4 span {
+  color: var(--color-tertiary);
+  transition: all 0.5s ease-in-out;
+}
+
+.port-c .white-box .subtitle-box {
+  padding: 1.5rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.port-c .white-box .subtitle-box  p {
+  line-height: 1.5rem;
+  color: var(--color-greytext);
+  text-align: left;
+  transition: all 0.5s ease-in-out;
+}
+
+.port-c .white-box .port-stat-title {
+  font-size: 2rem;
+  text-align: left;
+  padding: 1rem;
+  position: relative;
+  color: var(--color-secondary);
+  transition: all 0.5s ease-in-out;
+}
+
+.port-c .white-box .port-stat-title span {
+  color: var(--color-tertiary);
+  transition: all 0.5s ease-in-out;
+}
+
+.port-c .port-text {
+  color: var(--color-secondary);
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+}
+
+
+.port-c .portfolios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+}
+.port-c .portfolios .portfolio-item {
+  position: relative;
+  background-color: var(--color-text-back);
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    transition: all 0.5s ease-in-out;
+  }
+}
+
+.port-c .portfolios .portfolio-item:hover img {
+  transform: scale(1.05);
+}
+.port-c .portfolios .portfolio-item img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transition: all 0.4s ease-in-out;
+}
+.port-c .portfolios .portfolio-item .hover-items {
+  width: 100%;
+  height: 300px;
+  background-color: var(--color-img-shadow);
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.4s ease-in-out;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.5);
+
+}
+.port-c .portfolios .portfolio-item .hover-items h3 {
+  font-size: 1.5rem;
+  color: var(--color-tertiary);
+  margin-bottom: 1.5rem;
+}
+.port-c .portfolios .portfolio-item .hover-items .icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.port-c .portfolios .portfolio-item .hover-items .icons .icon {
+  background-color: var(--color-cont1);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.75rem;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+.port-c .portfolios .portfolio-item .hover-items .icons .icon i {
+  font-size: 1.5rem;
+  color: var(--color-text-back);
+  margin: 0 1rem;
+
+  &:hover {
+    color: var(--color-text-back);
+  }
+}
+.port-c .portfolios .portfolio-item .hover-items .icons .icon:hover {
+  background-color: var(--color-tertiary);
+}
+
+.port-c .portfolios .portfolio-item .port-item-text {
+  margin-top: -7px;
+  padding: 1.1rem;
+  border-top: 10px solid var(--color-tertiary);
+}
+.port-c .portfolios .portfolio-item .port-item-text h4 {
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.7rem;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-tertiary);
+  }
+}
+
+.port-c .portfolios .portfolio-item .port-item-text p {
+  color: var(--color-greytext);
+  line-height: 1.5rem;
+  padding-bottom: 1rem;
+  text-align: justify;
+}
+.port-c .portfolios .portfolio-item .port-item-text h5 {
+  color: var(--color-tertiary);
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.port-c .portfolios-essay {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.port-c .portfolios-essay .portfolio-item {
+  position: relative;
+  background-color: var(--color-text-back);
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease-in-out;
+
+  &::hover {
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+    transition: all 0.4s ease-in-out;
+  }
+  
+}
+
+.port-c .portfolios-essay .portfolio-item:hover img {
+  transform: scale(1.05);
+  box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.3);
+}
+.port-c .portfolios-essay .portfolio-item img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transition: all 0.4s ease-in-out;
+}
+.port-c .portfolios-essay .portfolio-item .hover-items {
+  width: 100%;
+  height: 300px;
+  background-color: var(--color-text-back);
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.4s ease-in-out;
+}
+.port-c .portfolios-essay .portfolio-item .hover-items h3 {
+  font-size: 1.5rem;
+  color: var(--color-tertiary);
+  margin-bottom: 1.5rem;
+}
+.port-c .portfolios-essay .portfolio-item .hover-items .icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.port-c .portfolios-essay .portfolio-item .hover-items .icons .icon {
+  background-color: var(--color-cont1);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.75rem;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-tertiary);
+  }
+
+  i {
+    font-size: 1.5rem;
+    color: var(--color-text-back);
+    margin: 0 1rem;
+
+    &:hover{
+      color: var(--color-text-back);
+    }
+  }
+}
+
+.port-c .portfolios-essay .portfolio-item .port-item-text {
+  margin-top: -7px;
+  padding: 1.1rem;
+  border-top: 10px solid var(--color-tertiary);
+}
+
+.port-c .portfolios-essay .portfolio-item .port-item-text h4 {
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.7rem;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-tertiary);
+    text-shadow: 0 2px 15px rgba(0,0,0,.1);
+  }
+}
+
+.port-c .portfolios-essay .portfolio-item .port-item-text p {
+  color: var(--color-greytext);
+  line-height: 1.5rem;
+  padding-bottom: 1rem;
+  text-align: justify;
+}
+.port-c .portfolios-essay .portfolio-item .port-item-text h5 {
+  color: var(--color-tertiary);
+  text-shadow: 0 2px 15px rgba(0,0,0,.3);
+}
+
+.port-c .portfolio-item:hover .hover-items {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/*/ PROJECTS SECTION ------------------------- --------------------------------------------------/*/
+
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-gap: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 6rem;
+}
+.projects .pj-item {
+  position: relative;
+  background-color: var(--color-cont1);
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease-in-out;
+}
+.projects .pj-item:hover {
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  transition: all 0.4s ease-in-out;
+}
+.projects .pj-item:hover img {
+  transform: scale(1.1);
+  box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.8);
+}
+.projects .pj-item img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transition: all 0.4s ease-in-out;
+}
+.projects .pj-item .pj-hover-items {
+  width: 100%;
+  height: 300px;
+  background-color: var(--color-cont1);
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.4s ease-in-out;
+}
+.projects .pj-item .pj-hover-items h3 {
+  font-size: 1.5rem;
+  color: var(--color-text-back);
+  margin-bottom: 1.5rem;
+}
+.projects .pj-item .pj-hover-items .pj-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.projects .pj-item .pj-hover-items .pj-icons .pj-icon {
+  background-color: var(--color-tertiary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.75rem;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+.projects .pj-item .pj-hover-items .pj-icons .pj-icon i {
+  font-size: 1.5rem;
+  color: var(--color-cont1);
+  margin: 0 1rem;
+}
+.projects .pj-item .pj-hover-items .pj-icons .pj-icon:hover {
+  background-color: var(--color-tertiary);
+}
+.projects .pj-item .pj-hover-items .pj-icons .pj-icon:hover i {
+  color: var(--color-text-back);
+}
+.projects .pj-item .pj-item-text {
+  margin-top: -7px;
+  padding: 1.1rem;
+  border-top: 10px solid var(--color-tertiary);
+}
+.projects .pj-item .pj-item-text h4 {
+  font-size: 1.5rem;
+  color: var(--color-text-back);
+  margin-bottom: 0.7rem;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
+}
+.projects .pj-item .pj-item-text h4:hover {
+  color: var(--color-tertiary);
+}
+.projects .pj-item .pj-item-text p {
+  color: var(--color-greytext);
+  line-height: 1.5rem;
+  padding-bottom: 1rem;
+  text-align: justify;
+}
+.projects .pj-item .pj-item-text h5 {
+  color: var(--color-tertiary);
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+/*/ --------------------------- THE BLOG SECTION ----------------------- /*/
+
+/* This is the main container for the blogs section*/
+.blog-c {
+  display: grid;
+  grid-template-columns: repeat(1 , 1fr);
+  grid-gap: 1rem;
+  margin-top: 0rem;
+  margin-bottom: 6rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.blog-c .white-box {
+  background-color: var(--color-text-back);
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+}
+
+.blog-c .white-box .subtitle-box  h4 {
+  font-size: 3rem;
+  color: var(--color-secondary);
+  text-align: left;
+  transition: all 0.5s ease-in-out;
+}
+
+.blog-c .white-box .subtitle-box .ot-text {
+  color: var(--color-tertiary);
+  transition: all 0.5s ease-in-out;
+}
+
+.blog-c .white-box .subtitle-box {
+  padding: 1.5rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.blog-c .white-box .subtitle-box  p {
+  line-height: 1.5rem;
+  color: var(--color-greytext);
+  text-align: left;
+  transition: all 0.5s ease-in-out;
+}
+
+.blog-c .blog-it-c {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.blog-c .blog-it-c .blog-item {
+  position: relative;
+  background-color: var(--color-text-back);
+  border-radius: 10px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px);
+    transition: all 0.5s ease-in-out;
+    /*/ Makes the overall box go up and down /*/
+  }
+}
+
+
+.blog-c .blog-it-c .blog-item:hover img {
+  transform: scale(1.05);
+  box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.blog-c .blog-it-c .blog-item img {
+  width: 100%;
+  height: 22.5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+.blog-c .blog-it-c .blog-item:hover .blog-hover-items {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.blog-c .blog-it-c .blog-item .blog-hover-items {
+  width: 100%;
+  height: 22.5rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  background-color: var(--blog-fade);
+}
+
+.blog-c .blog-it-c .blog-item .image .blog-hover-items p {
+  font-size: 1.2vw;
+  color: var(--color-greytext);
+  text-align : justify;
+  position: relative;
+  width: 65vw;
+  height: 21vw;
+  transition: all 0.5s ease-in-out;
+}
+
+.blog-c .blog-it-c .blog-item .blog-item-text {
+  margin-top: -7px;
+  padding: 1.1rem;
+  border-top: 8px solid var(--color-tertiary);
+  transition: all 0.5s ease-in-out;
+}
+.blog-c .blog-it-c .blog-item .blog-item-text h4 {
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+  cursor: pointer;
+  color: var(--color-secondary);
+  transition: all 0.5s ease-in-out;
+}
+.blog-c .blog-it-c .blog-item .blog-item-text h4:hover {
+  color: var(--color-tertiary);
+}
+
+.blog-c .blog-it-c .blog-item .blog-hover-items .blog-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+}
+.blog-c .blog-it-c .blog-item .blog-hover-items .blog-icons .blog-icon {
+  background-color: var(--color-cont1);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0.75rem;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.blog-c .blog-it-c .blog-item .blog-hover-items .blog-icons .blog-icon i {
+  font-size: 1.5rem;
+  color: var(--color-tertiary);
+  margin: 1rem;
+  transition: all 0.5s ease-in-out;
+}
+.blog-c .blog-it-c .blog-item .blog-hover-items .blog-icons .blog-icon:hover {
+  background-color: var(--color-tertiary);
+}
+.blog-c .blog-it-c .blog-item .blog-hover-items .blog-icons .blog-icon:hover i {
+  color: var(--color-text-back);
+}
+
+
+/*/------------CONTACT SECTION-------------/*/
+/* ------ Main CONTACT Container ------ */
+.contact-c {
+  margin-bottom: 1rem;
+  transition: all 0.5s ease-in-out;
+}
+/* ------ CONTACT Subheading ------ */
+/* Contact Subheading WhiteBox Container */
+.contact-c .white-box-h {
+  background-color: var(--color-text-back);
+  border-radius: 10px;
+  margin-bottom: 0rem;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+}
+/* Contact subheading text box container */
+.contact-c .white-box-h .subtitle-box {
+  padding: 1.5rem;
+  transition: all 0.5s ease-in-out;
+}
+/* Contact page heading text */
+.contact-c .white-box-h .subtitle-box  h4 {
+  font-size: 3rem;
+  color: var(--color-secondary);
+  text-align: left;
+  transition: all 0.5s ease-in-out;
+}
+/* Contact page other color heading text */
+.contact-c .white-box-h .subtitle-box .ot-text {
+  color: var(--color-tertiary);
+  transition: all 0.5s ease-in-out;
+}
+/* Contact page subheading etra text */
+.contact-c .white-box-h .subtitle-box  p {
+  line-height: 1.5rem;
+  color: var(--color-greytext);
+  text-align: left;
+  transition: all 0.5s ease-in-out;
+}
+/* ------ Contact Item Container ------ */
+/* This is the container for a contact item box */
+.contact-c .con-i {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 0rem;
+  margin-top: 1rem;
+  position: relative;
+}
+/*/ This is the p text in contact item container /*/
+.contact-c .con-i p {
+  margin: 1rem 1rem;
+  line-height: 2rem;
+  color: var(--color-secondary);
+}
+/* This is the h4 text in the contact item container */
+.contact-c .con-i h4 {
+  margin-top: 1rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+/* ------ IMAGE container for contact page ------ */
+.contact-c .con-i .con-img{
+  padding: 0;
+}
+/* This is the figure container for the contact page image */
+.contact-c .con-i .con-img .img-c {
+  width: 100%;
+  height: 500px;
+  background-color: none;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+/* This is image on the contact page. */
+.contact-c .con-i .img-c img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+/* Caption on contact page image */
+.contact-c .con-i .img-c figcaption {
+position: absolute; 
+bottom: 0rem; 
+left: 0;
+width: 100%; 
+padding: 5px;
+text-align: right;
+color: var(--color-caption);
+/* background: rgba(255, 255, 255, 0.405);*/
+font-size: 0.7rem;
+transition: all 0.5s ease-in-out;
+}
+
+/* ------ TEXT container for contact page item------ */
+.contact-c .con-i .white-box  {
+  background-color: var(--color-text-back);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-bottom: 0rem;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease-in-out;
+}
+
+/* text section in the contact item */
+.contact-c .con-i .white-box .text-box {
+  margin: 2rem;
+  position:relative;
+  transition: all 0.5s ease-in-out;
+}
+/*/ ------ Contact Buttons Grid Container ------ /*/
+.contact-c .con-i .white-box .text-box .con-btn-grid {
+  display: flex;
+  gap: 1rem;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+/* contact buttons containers subheading text */
+.contact-c .con-i .white-box .text-box .con-btn-grid h4 {
+  margin-top: 1rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+/* THE BUTTONS */
+/*/ This is a button container in the grid /*/
+.contact-c .con-i .white-box .text-box .con-btn-grid .btn-con {
+  display: flex;
+  align-self: flex-start;
+}
+.contact-c .con-i .white-box .text-box .con-btn-grid .btn-con a {
+  border-radius: 40px;
+  color: inherit;
+  font-weight: 600;
+  position: relative;
+  border: 3px solid var(--color-tertiary);
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+.contact-c .con-i .white-box .text-box .con-btn-grid .btn-con a:hover {
+  transition: all 0.4s ease-out;
+  background-color: var(--color-tertiary);
+} 
+
+.contact-c .con-i .white-box .text-box .con-btn-grid .btn-con a .btn-text {
+  padding: 0 2rem;
+  color: var(--color-tertiary);
+}
+.contact-c .con-i .white-box .text-box .con-btn-grid .btn-con a .btn-icon {
+  background-color: var(--color-tertiary);
+  color: var(--color-text-back);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 1rem;
+}
+.contact-c .con-i .white-box .text-box .con-btn-grid .btn-con a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: all 0.4s ease-out;
+  z-index: -1;
+}
+.contact-c .con-i .white-box .text-box .con-btn-grid .btn-con a:hover .btn-text { 
+  padding: 0 2rem;
+  color: var(--color-text-back);
+}
+.contact-c .con-i .white-box .text-box .con-btn-grid .btn-con a:hover::before {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-tertiary);
+  transform: translateX(0);
+  transition: all 0.4s ease-out;
+}
+
+
+
+/*Independent Components*/
+.text-container .btn-con {
+  display: flex;
+  align-self: flex-start;
+
+}
+
+/* The resume download button text before you hover over it */
+.text-container .main-btn {
+  border-radius: 40px;
+  color: inherit;
+  font-weight: 600;
+  position: relative;
+  border: 3px solid var(--color-tertiary);
+  display: flex;
+  align-self: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+/* Text of resume button BEFORE you hover over it */
+.text-container .main-btn .btn-text {
+  padding: 0 2rem;
+  color: var(--color-tertiary);
+}
+
+.text-container .main-btn .btn-icon {
+  background-color: var(--color-tertiary);
+  color: var(--color-text-back);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+.text-container .main-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: all 0.4s ease-out;
+  z-index: -1;
+}
+
+/* Resume download button text AFTER you hover over it */
+.text-container .main-btn:hover .btn-text { 
+  padding: 0 2rem;
+  color: var(--color-text-back);
+}
+
+.text-container .main-btn:hover {
+  transition: all 0.4s ease-out;
+  background-color: var(--color-tertiary);
+}
+
+.text-container .main-btn:hover::before {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-text-back);
+  transform: translateX(0);
+  transition: all 0.4s ease-out;
+}
+
+/* This is the main title container formatting on the pages not including the homepage */
+.main-title {
+  text-align: center;
+  background-color: var(--color-text-back);
+  border-radius: 10px;
+  box-shadow: 1px 2px 15px rgba(0, 0, 0, 0.1);
+
+}
+
+/* This is the main title formatting on the pages not including the homepage */
+.main-title h2 {
+  position: relative;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  padding: 1rem;
+}
+
+/* This is the main title 'other color' text formatting on the pages not including the homepage */
+.main-title h2 span {
+  color: var(--color-tertiary);
+}
+
+.main-title h2 .bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: var(--color-greytext);
+  transition: all 0.4s ease-in-out;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  font-weight: 800;
+  font-size: 6.3rem;
+}
+.main-title p {
+  color: var(--color-greytext);
+  padding: 1rem;
+}
+
+@media screen and (max-width: 1370px) {
+
+  .about-container .about-boxes-cont{
+    grid-template-columns: repeat(2, 2fr);
+  }
+  .section{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 5rem;
+    padding-right: 10rem;
+  }
+  .header-container {
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 1170px) {
+
+}
+
+@media screen and (max-width: 1270px) {
+
+  .port-c .portfolios {
+    grid-template-columns: repeat(2, 2fr);
+  }
+
+  .port-c .portfolios-essay {
+    grid-template-columns: repeat(2, 2fr);
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .about-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .section{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 5rem;
+    padding-right: 10rem;
+  }
+}
+
+/* ------------------------ MAX WIDTH 970 PX ------------------------ */
+
+
+@media screen and (max-width: 970px) {
+
+  .header-container {
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .section {
+    padding: 1rem 1rem;
+  }
+
+  .theme-btn {
+    width: 50px;
+    height: 50px;
+  }
+  .header-content {
+    grid-template-columns: 1fr;
+    padding-bottom: 6rem;
+  }
+
+  /* flips the buttons to the top of the screen, removing this for now*/
+  .controls {
+    top: 0;
+    bottom: auto;
+    flex-direction: row;
+    justify-content: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    background-color: var(--color-img-shadow);
+    z-index: 100;
+  }
+  .controls .control {
+    margin: 1rem 1rem;
+    z-index: 100;
+  }
+  .section {
+    margin-top: 5rem;
+  }
+  .theme-btn{
+    top: 2%;
+    right: 3%;
+    z-index: 101;
+  }
+
+}
+
+@media screen and (max-width: 740px) {
+
+  .about-stats .progress-bars {
+    grid-template-columns: 1fr;
+  }
+
+
+  .theme-btn{
+    top: 92%;
+    right: 3%;
+    z-index: 101;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .about-container .about-boxes-cont{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .port-c .portfolios {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .port-c .portfolios-essay {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+/*# sourceMappingURL=styles.css.map */
