@@ -643,8 +643,8 @@ transition: all 0.5s ease-in-out;
   margin: 0;
   padding: 0;
   top: 0.5rem;
-  
 }
+
 .timeline .white-box .tl-item .tl-item-h .tl-item-logo .tl-duration {
   padding: 0.2rem 0.6rem;
   background-color: var(--color-tertiary);
@@ -735,8 +735,9 @@ margin-left: 1.5rem;
   background-color: var(--color-secondary);
   transform: translateX(-50%);
 }
+/* ---------------------------- PERSONAL PROJECT SECTION ------------------------  */
 
-/* PROJECT HEADING*/
+/* Project Heading */
 
 .project .white-box {
   background-color: var(--color-text-back);
@@ -764,7 +765,84 @@ margin-left: 1.5rem;
   color: var(--color-greytext);
   text-align: left;
 }
-/* -------------------------------------  */
+/*------------------------------------*/
+/*----- Project Container  -----*/
+.project .pj-cont {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 1rem;
+}
+
+.project .pj-cont .pj-item{
+  display: flex;
+
+}
+
+.project .pj-cont .pj-item .pj-img{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+.project .pj-cont .pj-item .pj-wb{
+  border-radius: 10px;
+  transition: all 0.4s ease-in-out;
+  background-color: var(--color-text-back);
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.project .pj-cont .pj-item .pj-img img{
+  width: 100%;
+  height: 100%; 
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.project .pj-cont .pj-item .pj-wb iframe{
+  width: 100%;
+  height: 20rem;
+  border-radius: 10px;
+  border-color: transparent;
+  transition: all 0.4s ease-in-out;
+}
+/* NOMI */
+.project .pj-cont .pj-item .pj-wb .pj-text{
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.project .pj-cont .pj-item .pj-wb .pj-text h4{
+  font-size: 1.5rem;
+  color: var(--color-tertiary);
+  text-align: left;
+  transition: all 0.5s ease-in-out;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.project .pj-cont .pj-item .pj-wb .pj-text p{
+  font-size: 1rem;
+  color: var(--color-greytext);
+  text-align: justify;
+  transition: all 0.5s ease-in-out;
+  line-height: 1.5rem;
+  padding: 1rem;
+  
+}
+
+
+
+/* -------------------------------------------------------------------------------  */
+
 /* -------- Timeline White Box Text -------- */
 .timeline .white-box .text-box {
   padding: 2rem;
@@ -1077,118 +1155,6 @@ margin-left: 1.5rem;
   transform: scale(1.05);
 }
 
-/*/ PROJECTS SECTION ------------------------- --------------------------------------------------/*/
-
-
-.projects {
-  display: grid;
-  grid-template-columns: repeat(2, 2fr);
-  grid-gap: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 6rem;
-}
-.projects .pj-item {
-  position: relative;
-  background-color: var(--color-cont1);
-  border-radius: 10px;
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease-in-out;
-}
-.projects .pj-item:hover {
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.3);
-  transform: translateY(-5px);
-  transition: all 0.4s ease-in-out;
-}
-.projects .pj-item:hover img {
-  transform: scale(1.1);
-  box-shadow: 1px 4px 15px rgba(0, 0, 0, 0.8);
-}
-.projects .pj-item img {
-  width: 100%;
-  height: 300px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  transition: all 0.4s ease-in-out;
-}
-.projects .pj-item .pj-hover-items {
-  width: 100%;
-  height: 300px;
-  background-color: var(--color-cont1);
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  opacity: 0;
-  transform: scale(0);
-  transition: all 0.4s ease-in-out;
-}
-.projects .pj-item .pj-hover-items h3 {
-  font-size: 1.5rem;
-  color: var(--color-text-back);
-  margin-bottom: 1.5rem;
-}
-.projects .pj-item .pj-hover-items .pj-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.projects .pj-item .pj-hover-items .pj-icons .pj-icon {
-  background-color: var(--color-tertiary);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 0.75rem;
-  cursor: pointer;
-  transition: all 0.4s ease-in-out;
-}
-.projects .pj-item .pj-hover-items .pj-icons .pj-icon i {
-  font-size: 1.5rem;
-  color: var(--color-cont1);
-  margin: 0 1rem;
-}
-.projects .pj-item .pj-hover-items .pj-icons .pj-icon:hover {
-  background-color: var(--color-tertiary);
-}
-.projects .pj-item .pj-hover-items .pj-icons .pj-icon:hover i {
-  color: var(--color-text-back);
-}
-.projects .pj-item .pj-item-text {
-  margin-top: -7px;
-  padding: 1.1rem;
-  border-top: 10px solid var(--color-tertiary);
-}
-.projects .pj-item .pj-item-text h4 {
-  font-size: 1.5rem;
-  color: var(--color-text-back);
-  margin-bottom: 0.7rem;
-  transition: all 0.4s ease-in-out;
-  cursor: pointer;
-}
-.projects .pj-item .pj-item-text h4:hover {
-  color: var(--color-tertiary);
-}
-.projects .pj-item .pj-item-text p {
-  color: var(--color-greytext);
-  line-height: 1.5rem;
-  padding-bottom: 1rem;
-  text-align: justify;
-}
-.projects .pj-item .pj-item-text h5 {
-  color: var(--color-tertiary);
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: column;
-}
 /*/ --------------------------- THE BLOG SECTION ----------------------- /*/
 
 /* This is the main container for the blogs section*/
@@ -1477,6 +1443,7 @@ transition: all 0.5s ease-in-out;
   margin: 2rem;
   position:relative;
   transition: all 0.5s ease-in-out;
+  justify-items: center;
 }
 /*/ ------ Contact Buttons Grid Container ------ /*/
 .contact-c .con-i .white-box .text-box .con-btn-grid {
